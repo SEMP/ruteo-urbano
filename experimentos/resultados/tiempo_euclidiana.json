@@ -1,0 +1,21 @@
+{
+  "semilla": 2026,
+  "matriz": [
+    {
+      "puntos": 10,
+      "segundos_mediana": 5.310500000632601e-05
+    },
+    {
+      "puntos": 100,
+      "segundos_mediana": 0.005237129000306595
+    },
+    {
+      "puntos": 500,
+      "segundos_mediana": 0.13350955300029455
+    },
+    {
+      "puntos": 1000,
+      "segundos_mediana": 0.5368421740004123
+    }
+  ]
+}
