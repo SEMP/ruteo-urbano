@@ -2,8 +2,9 @@
 
 Dibuja el rectángulo urbano de Ciudad del Este sobre teselas de OpenStreetMap:
 - `mapa_red.svg`: solo el mapa con el rectángulo de estudio.
-- `mapa_muestra.svg`: además, los 100 puntos de la muestra de la semilla 2026 (los mismos del
-  experimento), con un depósito y 15 clientes de una instancia resaltados.
+- `mapa_puntos.svg`: además, los 100 puntos de la muestra de la semilla 2026 (los mismos del
+  experimento).
+- `mapa_muestra.svg`: los mismos puntos, con un depósito y 15 clientes de una instancia resaltados.
 
     python3 experimentos/mapa_muestra.py experimentos/resultados/figuras
 """
@@ -40,7 +41,7 @@ def dibujar(puntos, instancia, ruta):
                   f'stroke="{AZUL}" stroke-width="3" stroke-dasharray="10 6"/>')
     for k, (lat, lon) in enumerate(puntos):
         x, y = a_pixel(lat, lon, ZOOM)
-        if k == instancia[0]:
+        if instancia and k == instancia[0]:
             continue
         resaltado = k in instancia
         partes.append(f'<circle cx="{x - x0:.1f}" cy="{y - y0:.1f}" r="{6 if resaltado else 4.5}" '
@@ -65,8 +66,9 @@ def main():
     puntos = puntos_sobre_calles(servidor, CIUDADES["Ciudad del Este"], 100, rng)
     instancia = random.Random(1).sample(range(len(puntos)), 16)  # solo ilustrativa
     dibujar([], [], os.path.join(carpeta, "mapa_red.svg"))
+    dibujar(puntos, [], os.path.join(carpeta, "mapa_puntos.svg"))
     dibujar(puntos, instancia, os.path.join(carpeta, "mapa_muestra.svg"))
-    print(f"{carpeta}: mapa_red.svg, mapa_muestra.svg")
+    print(f"{carpeta}: mapa_red.svg, mapa_puntos.svg, mapa_muestra.svg")
 
 
 if __name__ == "__main__":
