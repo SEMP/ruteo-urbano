@@ -6,13 +6,13 @@ distancia y el tiempo por calles que da OSRM (perfil car), y mide:
 1. Circuidad: distancia por calles / distancia en línea recta, para todos los pares.
 2. Vecino más cercano: en cuántos puntos el más cercano en línea recta no es el más cercano
    en tiempo por calles.
-3. Recorridos: un depósito y 15 casilleros; se arma el recorrido (vecino más cercano + 2-opt)
+3. Recorridos: un depósito y 15 clientes; se arma el recorrido (vecino más cercano + 2-opt)
    con la matriz en línea recta y con la de tiempos por calles, y se evalúan los dos con los
    tiempos por calles. La diferencia es lo que se pierde al planificar con la línea recta.
 4. Tiempo de cálculo de la matriz de OSRM (`table`) según la cantidad de puntos.
 
 Los puntos son aleatorios (semilla fija) dentro de un rectángulo urbano de cada ciudad, y se
-descartan los que quedan a más de 150 m de una calle. NO son casilleros reales.
+descartan los que quedan a más de 150 m de una calle. NO son clientes reales.
 
 Requiere OSRM levantado (`docker compose up -d osrm`). Solo biblioteca estándar.
 
@@ -144,7 +144,7 @@ def analizar_ciudad(servidor, nombre, caja, rng, n_pares, n_instancias, tam_inst
             abs(durac[i][j] - durac[j][i]) / max(durac[i][j], durac[j][i])
             for i in range(n_pares) for j in range(i + 1, n_pares) if durac[i][j] > 0),
         "instancias": n_instancias,
-        "casilleros_por_instancia": tam_instancia,
+        "clientes_por_instancia": tam_instancia,
         "exceso_recta_mediana_pct": statistics.median(excesos),
         "exceso_recta_max_pct": max(excesos),
         "instancias_con_exceso_pct": 100 * sum(e > 0.01 for e in excesos) / n_instancias,
@@ -171,7 +171,7 @@ def main():
     parser.add_argument("--servidor", default=None)
     parser.add_argument("--puntos", type=int, default=100, help="puntos por ciudad para pares")
     parser.add_argument("--instancias", type=int, default=50)
-    parser.add_argument("--casilleros", type=int, default=15)
+    parser.add_argument("--clientes", type=int, default=15)
     parser.add_argument("--salida", default=None, help="carpeta donde guardar resultados.json")
     parser.add_argument("--semilla", type=int, default=SEMILLA)
     parser.add_argument("--sin-matriz", action="store_true", help="no medir el tiempo de cálculo de la matriz")
@@ -182,7 +182,7 @@ def main():
     resultados = {"semilla": args.semilla, "max_snap_m": MAX_SNAP_M, "ciudades": [], "matriz": None}
     detalles = []
     for nombre, caja in CIUDADES.items():
-        fila, detalle = analizar_ciudad(servidor, nombre, caja, rng, args.puntos, args.instancias, args.casilleros)
+        fila, detalle = analizar_ciudad(servidor, nombre, caja, rng, args.puntos, args.instancias, args.clientes)
         resultados["ciudades"].append(fila)
         detalles.append(detalle)
         print(json.dumps(fila, ensure_ascii=False, indent=2))

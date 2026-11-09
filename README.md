@@ -1,9 +1,8 @@
-# ruteo-casilleros
+# ruteo-urbano
 
 Prototipo del proyecto de investigación **«Ruteo Dinámico de Vehículos en Escenarios
-Logísticos Emergentes — Fase II»** (FPUNE, 2026): ruteo dinámico de vehículos para la carga de
-casilleros de comercio electrónico, considerando capacidad de carga, tamaño de la flota y
-posición de los vehículos.
+Logísticos Emergentes — Fase II»** (FPUNE, 2026): ruteo dinámico de vehículos de reparto urbano,
+considerando capacidad de carga, tamaño de la flota y posición de los vehículos.
 
 - Red vial: OpenStreetMap + OSRM (local).
 - Documentación del proyecto, alcance y revisión de la literatura: workspace
@@ -21,9 +20,9 @@ docker compose down                # apagar
 ```
 
 **Visor** (<http://localhost:8080>): mapa con los puntos de `demo/puntos.json`. Clic en el
-mapa agrega un casillero, arrastrar lo mueve, clic derecho lo quita. Botones:
+mapa agrega un punto de entrega, arrastrar lo mueve, clic derecho lo quita. Botones:
 
-- *Ruta en este orden*: depósito → casilleros en el orden de la lista → depósito, dibujada por
+- *Ruta en este orden*: depósito → puntos de entrega en el orden de la lista → depósito, dibujada por
   las calles, con km y minutos de cada tramo.
 - *Mejor orden (OSRM)*: el servicio `trip` de OSRM, una heurística para un solo vehículo y sin
   capacidad. Es una referencia, no el método del proyecto.
@@ -42,7 +41,7 @@ mapa agrega un casillero, arrastrar lo mueve, clic derecho lo quita. Botones:
   distancias, entrada del ruteo; hasta 1000 × 1000 puntos con la configuración actual).
   Documentación: <https://project-osrm.org/docs/v5.24.0/api/>.
 
-Los puntos del demo son de prueba en Ciudad del Este, no casilleros reales.
+Los puntos del demo son de prueba en Ciudad del Este, no puntos de entrega reales.
 
 Autores: Daisy Kang, Sergio Morel.
 

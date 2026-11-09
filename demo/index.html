@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Visor de rutas — casilleros</title>
+<title>Visor de rutas — reparto urbano</title>
 <!-- Leaflet: mapas con OpenStreetMap. -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
   :root {
     --fondo: #f6f6f4; --panel: #ffffff; --texto: #1d1d1b; --suave: #6b6b66; --borde: #ddddd8;
-    --deposito: #b3261e; --casillero: #1f5fa8; --ruta: #1f5fa8; --optima: #2e7d32;
+    --deposito: #b3261e; --entrega: #1f5fa8; --ruta: #1f5fa8; --optima: #2e7d32;
   }
   * { box-sizing: border-box; }
   body { margin: 0; font: 14px/1.4 system-ui, sans-serif; color: var(--texto); background: var(--fondo);
@@ -24,7 +24,7 @@
   button { font: inherit; padding: 6px 10px; border: 1px solid var(--borde); border-radius: 6px;
            background: var(--fondo); cursor: pointer; }
   button:hover { border-color: var(--suave); }
-  button.principal { background: var(--casillero); color: #fff; border-color: var(--casillero); }
+  button.principal { background: var(--entrega); color: #fff; border-color: var(--entrega); }
   #estado { min-height: 20px; margin: 10px 0 0; color: var(--suave); font-size: 13px; }
   #estado.error { color: var(--deposito); }
   table { border-collapse: collapse; width: 100%; font-size: 12.5px; font-variant-numeric: tabular-nums; }
@@ -37,7 +37,7 @@
            display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
            box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
   .punto.deposito { background: var(--deposito); border-radius: 4px; }
-  .punto.casillero { background: var(--casillero); }
+  .punto.entrega { background: var(--entrega); }
   .coordenadas { color: var(--suave); font-size: 12px; margin-left: auto; }
   .matriz-scroll { overflow-x: auto; }
   footer { margin-top: 18px; color: var(--suave); font-size: 12px; }
@@ -52,7 +52,7 @@
 <aside>
   <h1>Visor de rutas</h1>
   <p class="ayuda">Red vial de OpenStreetMap servida por OSRM en local. Clic en el mapa: agrega un
-    casillero. Arrastrar: mover. Clic derecho en un casillero: quitarlo.</p>
+    punto de entrega. Arrastrar: mover. Clic derecho en un punto: quitarlo.</p>
 
   <div class="botones">
     <button class="principal" id="b-orden">Ruta en este orden</button>
@@ -69,7 +69,7 @@
 
   <footer>«Mejor orden» usa el servicio <code>trip</code> de OSRM (una heurística para un
     solo vehículo, sin capacidad): sirve de referencia, no es el método del proyecto.
-    Los puntos son de prueba, no casilleros reales.</footer>
+    Los puntos son de prueba, no puntos de entrega reales.</footer>
 </aside>
 <div id="mapa"></div>
 
@@ -83,16 +83,16 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(mapa);
 const capaRuta = L.layerGroup().addTo(mapa);
 
-let puntos = [];   // {nombre, tipo: "deposito" | "casillero", lat, lon, marcador}
+let puntos = [];   // {nombre, tipo: "deposito" | "entrega", lat, lon, marcador}
 
 // --- Puntos -------------------------------------------------------------------------
 
 const deposito = () => puntos.find(p => p.tipo === "deposito");
-const casilleros = () => puntos.filter(p => p.tipo === "casillero");
+const entregas = () => puntos.filter(p => p.tipo === "entrega");
 
 function etiqueta(p) {
-  // El depósito lleva ⌂ para no confundirse con un casillero «D».
-  return p.tipo === "deposito" ? "⌂" : p.nombre.replace(/^casillero\s*/i, "").slice(0, 2);
+  // El depósito lleva ⌂ para no confundirse con un punto «D».
+  return p.tipo === "deposito" ? "⌂" : p.nombre.replace(/^punto\s*/i, "").slice(0, 2);
 }
 
 function icono(p) {
@@ -121,10 +121,10 @@ function agregar(p) {
 }
 
 function nombreNuevo() {
-  const usados = new Set(casilleros().map(etiqueta));
+  const usados = new Set(entregas().map(etiqueta));
   const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  for (const l of letras) if (!usados.has(l)) return `casillero ${l}`;
-  return `casillero ${casilleros().length + 1}`;
+  for (const l of letras) if (!usados.has(l)) return `punto ${l}`;
+  return `punto ${entregas().length + 1}`;
 }
 
 function listar() {
@@ -144,7 +144,7 @@ async function cargar() {
 }
 
 mapa.on("click", e => {
-  agregar({ nombre: nombreNuevo(), tipo: "casillero", lat: e.latlng.lat, lon: e.latlng.lng });
+  agregar({ nombre: nombreNuevo(), tipo: "entrega", lat: e.latlng.lat, lon: e.latlng.lng });
   limpiar(); listar();
 });
 
@@ -181,14 +181,14 @@ function tramos(titulo, orden, legs) {
 }
 
 async function rutaEnOrden() {
-  const orden = [deposito(), ...casilleros(), deposito()];
+  const orden = [deposito(), ...entregas(), deposito()];
   const datos = await osrm("route", orden, "overview=full&geometries=geojson");
   dibujar(datos.routes[0].geometry, getComputedStyle(document.body).getPropertyValue("--ruta"));
   tramos("Ruta en el orden de la lista (ida y vuelta)", orden, datos.routes[0].legs);
 }
 
 async function mejorOrden() {
-  const entrada = [deposito(), ...casilleros()];
+  const entrada = [deposito(), ...entregas()];
   const datos = await osrm("trip", entrada, "source=first&roundtrip=true&overview=full&geometries=geojson");
   // waypoints[i].waypoint_index: posición del punto i de la entrada dentro del recorrido.
   const orden = [];
@@ -199,7 +199,7 @@ async function mejorOrden() {
 }
 
 async function matriz() {
-  const lista = [deposito(), ...casilleros()];
+  const lista = [deposito(), ...entregas()];
   const datos = await osrm("table", lista, "annotations=duration,distance");
   const cabecera = lista.map(p => `<th>${etiqueta(p)}</th>`).join("");
   const filas = lista.map((p, i) => `<tr><td>${etiqueta(p)}</td>${
@@ -228,7 +228,7 @@ function limpiar() {
 
 function boton(id, accion) {
   document.getElementById(id).addEventListener("click", async () => {
-    if (!casilleros().length) return avisar("Agregá al menos un casillero (clic en el mapa).", true);
+    if (!entregas().length) return avisar("Agregá al menos un punto de entrega (clic en el mapa).", true);
     avisar("Consultando OSRM…");
     try { await accion(); avisar(""); }
     catch (e) { avisar(`${e.message}. ¿Está levantado OSRM? (docker compose up -d)`, true); }

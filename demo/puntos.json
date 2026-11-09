@@ -1,10 +1,10 @@
 {
-  "nota": "Puntos de prueba en Ciudad del Este: no son casilleros ni depósitos reales. El primero es el depósito.",
+  "nota": "Puntos de prueba en Ciudad del Este: no son puntos de entrega ni depósitos reales. El primero es el depósito.",
   "puntos": [
     {"nombre": "depósito (prueba)", "tipo": "deposito", "lat": -25.4960, "lon": -54.6640},
-    {"nombre": "casillero A", "tipo": "casillero", "lat": -25.5095, "lon": -54.6115},
-    {"nombre": "casillero B", "tipo": "casillero", "lat": -25.5290, "lon": -54.6205},
-    {"nombre": "casillero C", "tipo": "casillero", "lat": -25.4870, "lon": -54.6280},
-    {"nombre": "casillero D", "tipo": "casillero", "lat": -25.5450, "lon": -54.6430}
+    {"nombre": "punto A", "tipo": "entrega", "lat": -25.5095, "lon": -54.6115},
+    {"nombre": "punto B", "tipo": "entrega", "lat": -25.5290, "lon": -54.6205},
+    {"nombre": "punto C", "tipo": "entrega", "lat": -25.4870, "lon": -54.6280},
+    {"nombre": "punto D", "tipo": "entrega", "lat": -25.5450, "lon": -54.6430}
   ]
 }

@@ -8,7 +8,7 @@ estándar de Python, para que corra sin instalar nada.
 
 Sin --servidor, usa el puerto de OSRM_PUERTO (variable de entorno o .env), o 5000.
 
-Los puntos son de prueba, en Ciudad del Este: no son casilleros ni depósitos reales.
+Los puntos son de prueba, en Ciudad del Este: no son puntos de entrega ni depósitos reales.
 OSRM ubica cada punto en la calle más cercana.
 """
 

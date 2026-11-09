@@ -1,4 +1,4 @@
-# AGENTS.md — ruteo-casilleros
+# AGENTS.md — ruteo-urbano
 
 Instrucciones para agentes de IA (Claude Code, Codex, etc.). **Este es el archivo canónico**:
 `CLAUDE.md` solo lo importa. Los cambios van acá.
@@ -9,14 +9,19 @@ Código del proyecto de investigación **«Ruteo Dinámico de Vehículos en Esce
 Emergentes — Fase II»** (FPUNE, 2026; Daisy Kang y Sergio Morel).
 
 **El contexto del proyecto no está acá**: está en el workspace `proyecto-inv-2026`
-(`git@github.com:SEMP/proyecto-inv-2026.git`), que clona este repo en `repos/ruteo-casilleros`.
+(`git@github.com:SEMP/proyecto-inv-2026.git`), que clona este repo en `repos/ruteo-urbano`.
 Ahí están el proyecto presentado, el alcance (`docs/pendientes.md`), las herramientas
 (`docs/herramientas.md`), la revisión de la literatura y los mensajes entre el equipo. Si este
 repo está clonado dentro del workspace, leer `../../AGENTS.md` al empezar.
 
-**Qué resuelve:** la mejor ruta para **cargar los casilleros** (depósito → casilleros), con la
-ubicación de los casilleros como dato, considerando la capacidad de carga de cada vehículo, la
-cantidad de vehículos y la posición de cada uno en el momento de decidir (ruteo dinámico).
+**Qué resuelve:** el ruteo de vehículos de reparto urbano (depósito → puntos de entrega), con
+la ubicación de los puntos como dato, considerando la capacidad de carga de cada vehículo, la
+cantidad de vehículos y la posición de cada uno en el momento de decidir (ruteo dinámico). El
+caso de aplicación se define en el workspace (`docs/pendientes.md`).
+
+**Este repo es público:** textos, comentarios y nombres son generales (puntos de entrega,
+clientes, depósito). El caso de aplicación concreto no se nombra acá; ver la regla
+sobre publicaciones del `AGENTS.md` del workspace.
 
 ## Reglas
 
