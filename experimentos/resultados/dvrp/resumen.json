@@ -1,0 +1,368 @@
+{
+ "parametros": {
+  "puntos": 30,
+  "pedidos": 60,
+  "vehiculos": 3,
+  "capacidad": 20,
+  "horizonte_h": 8,
+  "carga_min": 10,
+  "servicio_min": 5,
+  "liberacion_max": 0.75,
+  "salida": "experimentos/resultados/dvrp",
+  "semillas": 5,
+  "iteraciones": 300,
+  "iteraciones_completa": 6000,
+  "intervalo_min": 10,
+  "umbral": 0.8,
+  "dinamismos": [
+   0.25,
+   0.5,
+   0.75
+  ]
+ },
+ "escenarios": [
+  {
+   "ciudad": "Asunción",
+   "dinamismo": 0.25,
+   "insercion": {
+    "tiempo_viaje_h": 7.003588888888888,
+    "no_atendidos": 0,
+    "viajes": 10.6,
+    "espera_media_min": 145.5704722222222,
+    "tiempo_decision_medio_s": 0.00012491847932100955,
+    "tiempo_decision_max_s": 0.001498195000749547
+   },
+   "tabu": {
+    "tiempo_viaje_h": 5.038294444444445,
+    "no_atendidos": 0,
+    "viajes": 12.2,
+    "espera_media_min": 103.14958333333334,
+    "tiempo_decision_medio_s": 0.9067799313251523,
+    "tiempo_decision_max_s": 9.549759513000026
+   },
+   "tabu_espera": {
+    "tiempo_viaje_h": 4.663672222222223,
+    "no_atendidos": 0,
+    "viajes": 10.2,
+    "espera_media_min": 110.5338888888889,
+    "tiempo_decision_medio_s": 0.926134908854814,
+    "tiempo_decision_max_s": 10.393656506999832
+   },
+   "informacion_completa": {
+    "tiempo_viaje_h": 3.6264166666666666,
+    "no_atendidos": 0,
+    "viajes": 10,
+    "espera_media_min": 239.33443333333332,
+    "tiempo_decision_medio_s": 11.266249757200058,
+    "tiempo_decision_max_s": 11.810565167000277
+   },
+   "mejora_tabu_vs_insercion_pct": {
+    "media": 28.3697711570589,
+    "min": 17.055311644653422,
+    "max": 36.6715465007523
+   },
+   "brecha_tabu_vs_completa_pct": {
+    "media": 41.07585243430411,
+    "min": 27.197954783063246,
+    "max": 58.38742442563482
+   },
+   "brecha_espera_vs_completa_pct": {
+    "media": 30.596031484253587,
+    "min": 15.207572554295655,
+    "max": 46.35925244117182
+   },
+   "mejora_espera_vs_tabu_pct": {
+    "media": 7.191942085562742,
+    "min": -0.07777750771699926,
+    "max": 15.03656489327303
+   }
+  },
+  {
+   "ciudad": "Asunción",
+   "dinamismo": 0.5,
+   "insercion": {
+    "tiempo_viaje_h": 7.987377777777779,
+    "no_atendidos": 0,
+    "viajes": 14,
+    "espera_media_min": 151.51868333333334,
+    "tiempo_decision_medio_s": 7.273405855544039e-05,
+    "tiempo_decision_max_s": 0.0007655899999008398
+   },
+   "tabu": {
+    "tiempo_viaje_h": 5.957122222222222,
+    "no_atendidos": 0,
+    "viajes": 12.4,
+    "espera_media_min": 84.14520555555556,
+    "tiempo_decision_medio_s": 0.5617206232850483,
+    "tiempo_decision_max_s": 7.97633968900027
+   },
+   "tabu_espera": {
+    "tiempo_viaje_h": 5.445677777777778,
+    "no_atendidos": 0,
+    "viajes": 10.4,
+    "espera_media_min": 94.88045,
+    "tiempo_decision_medio_s": 0.5708405923272197,
+    "tiempo_decision_max_s": 7.856341591999808
+   },
+   "informacion_completa": {
+    "tiempo_viaje_h": 3.6785722222222224,
+    "no_atendidos": 0,
+    "viajes": 10.4,
+    "espera_media_min": 247.15696111111112,
+    "tiempo_decision_medio_s": 11.050417522599854,
+    "tiempo_decision_max_s": 11.60566849099996
+   },
+   "mejora_tabu_vs_insercion_pct": {
+    "media": 26.02529200459001,
+    "min": 19.081110465443242,
+    "max": 40.471224348998014
+   },
+   "brecha_tabu_vs_completa_pct": {
+    "media": 60.72764542565696,
+    "min": 40.826493333965956,
+    "max": 75.27649689699406
+   },
+   "brecha_espera_vs_completa_pct": {
+    "media": 48.00751122309752,
+    "min": 39.75918562309634,
+    "max": 57.89480983254169
+   },
+   "mejora_espera_vs_tabu_pct": {
+    "media": 7.648428903693172,
+    "min": 0.0,
+    "max": 15.153614979625932
+   }
+  },
+  {
+   "ciudad": "Asunción",
+   "dinamismo": 0.75,
+   "insercion": {
+    "tiempo_viaje_h": 8.21947222222222,
+    "no_atendidos": 0,
+    "viajes": 14.4,
+    "espera_media_min": 138.5965388888889,
+    "tiempo_decision_medio_s": 6.241067523050521e-05,
+    "tiempo_decision_max_s": 0.00044985800013819244
+   },
+   "tabu": {
+    "tiempo_viaje_h": 6.325805555555556,
+    "no_atendidos": 0,
+    "viajes": 13.4,
+    "espera_media_min": 80.48625555555556,
+    "tiempo_decision_medio_s": 0.3719490730437856,
+    "tiempo_decision_max_s": 4.767986896000366
+   },
+   "tabu_espera": {
+    "tiempo_viaje_h": 5.884027777777778,
+    "no_atendidos": 0,
+    "viajes": 10.6,
+    "espera_media_min": 90.89456111111112,
+    "tiempo_decision_medio_s": 0.37804782163028067,
+    "tiempo_decision_max_s": 4.7364910769993
+   },
+   "informacion_completa": {
+    "tiempo_viaje_h": 3.9299277777777775,
+    "no_atendidos": 0,
+    "viajes": 10.6,
+    "espera_media_min": 195.77796666666666,
+    "tiempo_decision_medio_s": 11.072426346599968,
+    "tiempo_decision_max_s": 11.527537570000277
+   },
+   "mejora_tabu_vs_insercion_pct": {
+    "media": 22.818266365625995,
+    "min": 11.807624429935887,
+    "max": 30.29919531411866
+   },
+   "brecha_tabu_vs_completa_pct": {
+    "media": 61.3032666067841,
+    "min": 56.153192746611516,
+    "max": 71.1948625809169
+   },
+   "brecha_espera_vs_completa_pct": {
+    "media": 50.4219863437375,
+    "min": 34.92709846804817,
+    "max": 66.04024999355248
+   },
+   "mejora_espera_vs_tabu_pct": {
+    "media": 6.827469424408469,
+    "min": 2.4543533114217126,
+    "max": 14.94685509074407
+   }
+  },
+  {
+   "ciudad": "Ciudad del Este",
+   "dinamismo": 0.25,
+   "insercion": {
+    "tiempo_viaje_h": 8.727694444444444,
+    "no_atendidos": 0,
+    "viajes": 11.2,
+    "espera_media_min": 164.67886666666666,
+    "tiempo_decision_medio_s": 0.0001290854300218548,
+    "tiempo_decision_max_s": 0.0014837669996268232
+   },
+   "tabu": {
+    "tiempo_viaje_h": 5.903894444444445,
+    "no_atendidos": 0,
+    "viajes": 12.2,
+    "espera_media_min": 123.14365555555555,
+    "tiempo_decision_medio_s": 0.9503606393570263,
+    "tiempo_decision_max_s": 9.966479196000364
+   },
+   "tabu_espera": {
+    "tiempo_viaje_h": 5.622577777777778,
+    "no_atendidos": 0,
+    "viajes": 10.4,
+    "espera_media_min": 125.8975,
+    "tiempo_decision_medio_s": 0.9484580456473315,
+    "tiempo_decision_max_s": 9.832593011000426
+   },
+   "informacion_completa": {
+    "tiempo_viaje_h": 4.382305555555556,
+    "no_atendidos": 0,
+    "viajes": 10,
+    "espera_media_min": 228.27356111111112,
+    "tiempo_decision_medio_s": 11.192050959399968,
+    "tiempo_decision_max_s": 11.67471253399981
+   },
+   "mejora_tabu_vs_insercion_pct": {
+    "media": 32.326499355488394,
+    "min": 28.206312500387494,
+    "max": 35.22548646009477
+   },
+   "brecha_tabu_vs_completa_pct": {
+    "media": 34.77291970956291,
+    "min": 27.52779883750311,
+    "max": 42.316838618892795
+   },
+   "brecha_espera_vs_completa_pct": {
+    "media": 28.288963889237323,
+    "min": 23.424823166676806,
+    "max": 38.42778928222489
+   },
+   "mejora_espera_vs_tabu_pct": {
+    "media": 4.790589794612263,
+    "min": 1.9033841794194761,
+    "max": 7.67891031676726
+   }
+  },
+  {
+   "ciudad": "Ciudad del Este",
+   "dinamismo": 0.5,
+   "insercion": {
+    "tiempo_viaje_h": 9.678383333333334,
+    "no_atendidos": 0,
+    "viajes": 14.2,
+    "espera_media_min": 143.82437777777778,
+    "tiempo_decision_medio_s": 6.474307747968071e-05,
+    "tiempo_decision_max_s": 0.0008597570003985311
+   },
+   "tabu": {
+    "tiempo_viaje_h": 6.827272222222223,
+    "no_atendidos": 0,
+    "viajes": 13.4,
+    "espera_media_min": 90.02032777777778,
+    "tiempo_decision_medio_s": 0.5131324643560711,
+    "tiempo_decision_max_s": 7.870540468000399
+   },
+   "tabu_espera": {
+    "tiempo_viaje_h": 6.22826111111111,
+    "no_atendidos": 0,
+    "viajes": 10.4,
+    "espera_media_min": 98.94189444444444,
+    "tiempo_decision_medio_s": 0.5313423883825362,
+    "tiempo_decision_max_s": 8.028194554000038
+   },
+   "informacion_completa": {
+    "tiempo_viaje_h": 4.450183333333333,
+    "no_atendidos": 0,
+    "viajes": 10.4,
+    "espera_media_min": 235.35929444444446,
+    "tiempo_decision_medio_s": 11.153833874800148,
+    "tiempo_decision_max_s": 11.780918740000743
+   },
+   "mejora_tabu_vs_insercion_pct": {
+    "media": 29.491380584934845,
+    "min": 26.577124975046598,
+    "max": 30.957974119363367
+   },
+   "brecha_tabu_vs_completa_pct": {
+    "media": 53.761069468201825,
+    "min": 43.12146838467821,
+    "max": 61.00373689074621
+   },
+   "brecha_espera_vs_completa_pct": {
+    "media": 40.33201365135042,
+    "min": 34.05477394921596,
+    "max": 49.740158851341384
+   },
+   "mejora_espera_vs_tabu_pct": {
+    "media": 8.702127355325329,
+    "min": 5.775534946013039,
+    "max": 13.312585668381892
+   }
+  },
+  {
+   "ciudad": "Ciudad del Este",
+   "dinamismo": 0.75,
+   "insercion": {
+    "tiempo_viaje_h": 9.406205555555555,
+    "no_atendidos": 1,
+    "viajes": 13.4,
+    "espera_media_min": 134.8111699623352,
+    "tiempo_decision_medio_s": 6.203743407065674e-05,
+    "tiempo_decision_max_s": 0.0004059409993715235
+   },
+   "tabu": {
+    "tiempo_viaje_h": 7.194694444444445,
+    "no_atendidos": 0,
+    "viajes": 13.6,
+    "espera_media_min": 103.2306,
+    "tiempo_decision_medio_s": 0.39805657104358955,
+    "tiempo_decision_max_s": 4.944928355000229
+   },
+   "tabu_espera": {
+    "tiempo_viaje_h": 6.8017166666666675,
+    "no_atendidos": 0,
+    "viajes": 10.6,
+    "espera_media_min": 108.11187777777778,
+    "tiempo_decision_medio_s": 0.40376176891412485,
+    "tiempo_decision_max_s": 4.8554589270006545
+   },
+   "informacion_completa": {
+    "tiempo_viaje_h": 4.417127777777777,
+    "no_atendidos": 0,
+    "viajes": 10.4,
+    "espera_media_min": 197.60518333333331,
+    "tiempo_decision_medio_s": 11.089080954400014,
+    "tiempo_decision_max_s": 11.551721195000027
+   },
+   "mejora_tabu_vs_insercion_pct": {
+    "media": 23.575219462611578,
+    "min": 17.479938961061578,
+    "max": 30.86897400200729
+   },
+   "brecha_tabu_vs_completa_pct": {
+    "media": 63.042627530207426,
+    "min": 51.13938462080176,
+    "max": 76.23169190354639
+   },
+   "brecha_espera_vs_completa_pct": {
+    "media": 54.001280060581124,
+    "min": 37.453858297290495,
+    "max": 70.61353229577536
+   },
+   "mejora_espera_vs_tabu_pct": {
+    "media": 5.629554951946486,
+    "min": 2.0075736377711864,
+    "max": 9.054904092568133
+   }
+  }
+ ],
+ "cvrplib": {
+  "brecha_mejor_media_pct": 0.40919273614745544,
+  "brecha_media_media_pct": 0.7038385825352234,
+  "brecha_insercion_media_pct": 77.79645347632422,
+  "optimos_alcanzados": 5,
+  "instancias": 8
+ }
+}
