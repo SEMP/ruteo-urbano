@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "demo"))
 from consulta import puerto_osrm  # noqa: E402
 
 SEMILLAS = [2026, 1, 2, 3, 4, 5]  # el orden de «Muestra 1» a «Muestra 6» en la presentación
-INSTANCIAS, CASILLEROS = 50, 15
+INSTANCIAS, CLIENTES = 50, 15
 
 # Las teselas se repiten entre mapas de la misma ciudad: se bajan una sola vez.
 mapa_muestra.tesela = functools.lru_cache(maxsize=None)(mapa_muestra.tesela)
@@ -34,7 +34,7 @@ def main():
         rng = random.Random(semilla)
         cde = puntos_sobre_calles(servidor, CIUDADES["Ciudad del Este"], 100, rng)
         for _ in range(INSTANCIAS):
-            rng.sample(range(100), CASILLEROS + 1)
+            rng.sample(range(100), CLIENTES + 1)
         asu = puntos_sobre_calles(servidor, CIUDADES["Asunción"], 100, rng)
         mapa_muestra.dibujar(cde, [], os.path.join(carpeta, f"cde_{k}.svg"), ciudad="Ciudad del Este")
         mapa_muestra.dibujar(asu, [], os.path.join(carpeta, f"asu_{k}.svg"), ciudad="Asunción")
