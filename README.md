@@ -8,6 +8,30 @@ considerando capacidad de carga, tamaño de la flota y posición de los vehícul
 - Documentación del proyecto, alcance y revisión de la literatura: workspace
   [`proyecto-inv-2026`](https://github.com/SEMP/proyecto-inv-2026).
 
+## Ruteo dinámico (`dvrp/`)
+
+Modelo: flota de K vehículos de capacidad Q que hacen varios viajes desde un depósito durante una
+jornada; los pedidos (punto de entrega, demanda) se conocen y quedan listos en el depósito en su
+fecha de liberación, a lo largo del día. Objetivo: atender todos los pedidos posibles con el
+menor tiempo de viaje. Detalle en `dvrp/modelo.py`.
+
+- **Métodos** (`dvrp/tabu.py`): inserción más barata y búsqueda tabú (reubicación,
+  intercambio, 2-opt y 2-opt*, con penalizaciones adaptativas).
+- **Simulación** (`dvrp/simulacion.py`): reoptimiza cada 10 min con los pedidos conocidos; cada
+  ejecución se controla con un verificador que no usa el código del método.
+- **Validación:**
+
+```
+python3 -m unittest discover tests
+python3 experimentos/cvrplib.py --salida experimentos/resultados/dvrp          # instancias estándar
+python3 experimentos/dvrp_escenarios.py --salida experimentos/resultados/dvrp  # requiere OSRM la 1.ª vez
+python3 experimentos/dvrp_resumen.py experimentos/resultados/dvrp
+```
+
+`experimentos/cvrplib/` tiene las instancias A de CVRPLIB (Augerat et al., 1995), descargadas
+de <https://galgos.inf.puc-rio.br/cvrplib/>. Las matrices de los escenarios quedan en
+`experimentos/resultados/dvrp/instancias/`, así que repetirlos no necesita OSRM.
+
 ## Demo: red vial con OSRM
 
 Requisitos: Docker (con Compose) y Python 3 (solo para el demo; no instala nada).

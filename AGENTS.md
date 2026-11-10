@@ -45,4 +45,11 @@ sobre publicaciones del `AGENTS.md` del workspace.
 
 ## Estado
 
-⚠️ FALTA: lenguaje y estructura del código. Todavía no se empezó a programar.
+Python 3, solo biblioteca estándar (corre sin instalar nada). Nombres en español.
+
+- `dvrp/`: modelo (`modelo.py`, con un verificador independiente), métodos (`tabu.py`:
+  inserción más barata y búsqueda tabú) y simulación de la jornada (`simulacion.py`).
+- `experimentos/`: distancias euclidianas frente a la red vial (`linea_recta_vs_red.py` y
+  figuras), validación en CVRPLIB (`cvrplib.py`) y escenarios del DVRP en Asunción y Ciudad del
+  Este (`dvrp_escenarios.py`, `dvrp_resumen.py`). Resultados en `experimentos/resultados/`.
+- `tests/`: `python3 -m unittest discover tests`. Correrlas antes de mergear a `main`.
